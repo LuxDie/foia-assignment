@@ -1,0 +1,18 @@
+<main>
+  <h1>List of goverment agencies</h1>
+  <table #table mat-table [dataSource]="myDataArray">
+    <mat-text-column name="title"></mat-text-column>
+    <mat-text-column name="website"></mat-text-column>
+    <mat-text-column name="submission_address" headerText="Submission Address"></mat-text-column>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"
+      (click)="rowClick(myRowData)"></tr>
+  </table>
+  <mat-paginator #paginator
+                [length]="inf"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="[10, 15, 20, 50]"
+                aria-label="Select page"
+                (page)="handlePageEvent($event)">
+  </mat-paginator>
+</main>

@@ -1,0 +1,9 @@
+<main>
+  <h2>{{ agency?.title }}</h2>
+  <h3>This agency has the following types of relationships</h3>
+  <mat-list>
+    @for (rel of agency?.rels; track $index) {
+      <mat-list-item>• {{ rel }}</mat-list-item>
+    }
+  </mat-list>
+</main>
