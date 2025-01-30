@@ -1,9 +1,15 @@
-### Describe the pros and cons of a few methods of communication between Angular components.
-Not sure.
-### Describe 3 things you dislike about Angular.
-It's too complex and has a too steep learning curve.
-### If there are any items that you did not complete, please list them out.
-I think I hit all the nails. There are a few things in need of ironing though.
-### If you had 40 hours to work on this project, please describe all the improvements you would incorporate.
-I'd add filtering, sorting and searching, plus a neater interface, with hovers,
-animations and colors.
+# FOIA listing example
+This example, which I made for a job proposal, showcases my skill in Angular and
+Angular Material. It retrieves data from an API (in this case, the USA Freedom
+of Information Act api) and displays it in list and detail views using Material
+components.
+
+To be able to pull data from the API you will need to request an API key from
+[foia.gov](https://www.foia.gov), and add a json file at the app level, named "**apikey.json**", containing
+the following information:
+```js
+/* apikey.json */
+{
+  "apiKey": "..." // replace with your API key
+}
+```
