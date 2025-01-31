@@ -28,31 +28,35 @@ export class AgencyListComponent {
   pageSize = 10;
   nextPageUrl?: string;
   prevPageUrl?: string;
+  loading = true;
 
   handlePageEvent(e: PageEvent) {
     if (e.pageSize == this.pageSize) {
-      const url = (e.pageIndex > e.previousPageIndex!) ? this.nextPageUrl! : this.prevPageUrl;
+      const url = (e.pageIndex > e.previousPageIndex!) ? this.nextPageUrl : this.prevPageUrl;
       if (!url) { return; }
-      this.dataService.getUrl(url).subscribe((list) => {
-        this.digestData(list);
-        this.table.renderRows();
-      });
+      this.loadPage(url);
     } else {
       this.paginator.pageIndex = 0;
       this.dataService.pageSize = this.pageSize = e.pageSize;
       this.loadPage();
     }
-    this.table.renderRows();
   }
 
-  loadPage() {
-    this.dataService.getAgencyList().subscribe((list) => {
-      this.digestData(list);
-      this.table.renderRows();
-    });
+  loadPage(url?: string) {
+    this.loading = true;
+    const next = (list: AgencyList) => {
+      this.loading = false;
+      this.assignData(list);
+      // this.table.renderRows();
+    };
+    if (url) {
+      this.dataService.getUrl(url).subscribe(next);
+    } else {
+      this.dataService.getAgencyList().subscribe(next);
+    }
   }
 
-  digestData = (list: AgencyList) => {
+  assignData = (list: AgencyList) => {
     this.myDataArray = [];
     this.nextPageUrl = list.links.next?.href;
     if (!this.nextPageUrl) { this.length = list.data.length; } // Assume length is known if no next page
