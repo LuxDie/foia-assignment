@@ -59,18 +59,19 @@ export class AgencyListComponent {
     this.prevPageUrl = list.links.prev?.href;
     for (let row of list.data) {
       const field = row.attributes;
+      const addr = field.submission_address;
       this.myDataArray.push({
         title: `${field.title} (${field.abbreviation})`,
         website: field.website?.uri,
 
         submission_address: (field.submission_address) ?
           `
-        ${field.submission_address.address_line1}, 
-        ${field.submission_address.address_line2}, 
-        ${field.submission_address.locality}, 
-        ${field.submission_address.administrative_area}, 
-        ${field.submission_address.postal_code}, 
-        ${field.submission_address.country_code}
+            ${addr.address_line1}, 
+            ${addr.address_line2}, 
+            ${addr.locality}, 
+            ${addr.administrative_area}, 
+            ${addr.postal_code}, 
+            ${addr.country_code}
         ` : undefined,
 
         id: row.id,
