@@ -10,14 +10,15 @@
           <mat-card-title>{{ agency?.title }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-  <p>This agency has the following relationships:</p>
-  <mat-chip-set>
-    @for (rel of agency?.rels; track $index) {
-      <mat-chip>{{ rel }}</mat-chip>
-    }
-  </mat-chip-set>
+          <p>This agency has the following relationships:</p>
+          <mat-chip-set>
+            @for (rel of agency?.rels; track $index) {
+              <mat-chip>{{ rel }}</mat-chip>
+            }
+          </mat-chip-set>
         </mat-card-content>
       </mat-card>
     </div>
   }
 </main>
+<button mat-raised-button routerLink="/">Back</button>
