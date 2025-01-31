@@ -14,9 +14,8 @@ export class AgencyListComponent {
   dataService = inject(DataService);
   @ViewChild('table') readonly table!: MatTable<any>;
   @ViewChild('paginator') readonly paginator!: MatPaginator;
-  readonly inf = Infinity;
-
   private readonly router = inject(Router)
+
   myDataArray: ({
     id: string,
     url: string
@@ -25,6 +24,7 @@ export class AgencyListComponent {
     submission_address?: string,
   }[]) = [];
   columnsToDisplay = ['title', 'website', 'submission_address'];
+  length = Infinity;
   pageSize = 10;
   nextPageUrl?: string;
   prevPageUrl?: string;
@@ -55,6 +55,7 @@ export class AgencyListComponent {
   digestData = (list: AgencyList) => {
     this.myDataArray = [];
     this.nextPageUrl = list.links.next?.href;
+    if (!this.nextPageUrl) { this.length = list.data.length; } // Assume length is known if no next page
     this.prevPageUrl = list.links.prev?.href;
     for (let row of list.data) {
       const field = row.attributes;
