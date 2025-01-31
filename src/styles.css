@@ -1,11 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-main {
-  max-width: 1200px;
-  margin: auto;
+/* html, body { height: 100%; } */
+body { 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  margin: 1rem auto; 
+  padding: 0 1rem;
+  max-width: 1200px; 
 }
+
 h1 { font: var(--mat-sys-display-large); }
 h2 { font: var(--mat-sys-headline-large); }
 h3 { font: var(--mat-sys-title-large); }
