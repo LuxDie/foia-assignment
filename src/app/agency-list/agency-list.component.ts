@@ -3,10 +3,11 @@ import { MatTableModule, MatTable } from '@angular/material/table'
 import { AgencyList, DataService } from '../data.service';
 import { MatPaginatorModule, MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-agency-list',
-  imports: [MatTableModule, MatPaginatorModule],
+  imports: [MatTableModule, MatPaginatorModule, MatProgressBarModule],
   templateUrl: './agency-list.component.html',
   styleUrl: './agency-list.component.css'
 })
@@ -76,7 +77,7 @@ export class AgencyListComponent {
             ${addr.administrative_area}, 
             ${addr.postal_code}, 
             ${addr.country_code}
-        ` : undefined,
+          ` : undefined,
 
         id: row.id,
         url: row.links.self.href

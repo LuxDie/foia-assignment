@@ -1,5 +1,8 @@
 <main>
   <h1>List of goverment agencies</h1>
+  @if (loading) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  } @else {
   <table #table mat-table [dataSource]="myDataArray">
     <mat-text-column name="title"></mat-text-column>
     <mat-text-column name="website"></mat-text-column>
@@ -7,7 +10,8 @@
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"
       (click)="rowClick(myRowData)"></tr>
-  </table>
+    </table>
+  }
   <mat-paginator #paginator
                 [length]="length"
                 [pageSize]="pageSize"

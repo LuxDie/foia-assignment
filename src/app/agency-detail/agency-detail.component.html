@@ -1,9 +1,23 @@
 <main>
-  <h2>{{ agency?.title }}</h2>
-  <h3>This agency has the following types of relationships</h3>
-  <mat-list>
+  @if(loading) {
+    <div class="spinner-container">
+      <mat-spinner></mat-spinner> <!-- Loading spinner -->
+    </div>
+  } @else {
+    <div>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ agency?.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+  <p>This agency has the following relationships:</p>
+  <mat-chip-set>
     @for (rel of agency?.rels; track $index) {
-      <mat-list-item>• {{ rel }}</mat-list-item>
+      <mat-chip>{{ rel }}</mat-chip>
     }
-  </mat-list>
+  </mat-chip-set>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  }
 </main>
